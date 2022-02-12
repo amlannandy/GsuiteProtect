@@ -1,0 +1,23 @@
+{
+  "name": "g-protect",
+  "version": "1.0.0",
+  "description": "On Demand Backup Service for Gmail",
+  "main": "index.js",
+  "repository": "git@github.com:amlannandy/G-Protect.git",
+  "author": "amlannandy <amlannandy5@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "server": "nodemon index.ts",
+    "client": "cd client && npm start",
+    "dev": "concurrently \"nodemon server\" \"cd client && npm start\"",
+    "build": "npx tsc"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
