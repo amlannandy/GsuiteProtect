@@ -1,8 +1,9 @@
-import { Request, Response } from "express";
+import { Response } from "express";
 
 import User from "../models/User";
+import IRequest from "../types/Request";
 
-export const login = async (req: Request, res: Response) => {
+export const login = async (req: IRequest, res: Response) => {
   const { name, email, imageUrl, googleId, accessToken } = req.body;
 
   let user = await User.findOne({ email: email });
@@ -15,5 +16,13 @@ export const login = async (req: Request, res: Response) => {
   res.status(200).json({
     success: true,
     data: token,
+  });
+};
+
+export const getCurrentUser = async (req: IRequest, res: Response) => {
+  const user = req.user;
+  res.status(200).json({
+    success: true,
+    data: user,
   });
 };
