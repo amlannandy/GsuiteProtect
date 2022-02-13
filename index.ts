@@ -4,6 +4,8 @@ import morgan from "morgan";
 import colors from "colors";
 import express, { Request, Response } from "express";
 
+import connectDatabase from "./services/database";
+
 // Load environment variables
 dotenv.config({ path: "./.env" });
 
@@ -19,6 +21,9 @@ import auth from "./routes/auth";
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
+
+// Connect to database
+connectDatabase();
 
 // Enable CORS
 app.use(cors());

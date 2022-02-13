@@ -15,8 +15,13 @@ const App = () => {
       email,
       imageUrl,
     };
+    console.log(body);
     const res = await fetch("http://localhost:5000/api/v1/auth/login", {
       method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(body),
     });
     const data = await res.json();
