@@ -1,11 +1,11 @@
 import express from "express";
 
-import { login, getCurrentUser } from "../controllers/auth";
+import { authenticate, getCurrentUser } from "../controllers/auth";
 import authHandler from "../middleware/authHandler";
 
 const router = express.Router();
 
-router.post("/login", login);
+router.post("/authenticate", authenticate);
 
 router.get("/current-user", authHandler, getCurrentUser);
 
