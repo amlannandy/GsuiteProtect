@@ -1,7 +1,9 @@
 import { Request } from "express";
 
+import IUser from "./User";
+
 interface IRequest extends Request {
-  user: any;
+  user: IUser;
 }
 
 export default IRequest;

@@ -16,6 +16,7 @@ app.use(express.json());
 
 // Import route files
 import auth from "./routes/auth";
+import backups from "./routes/backups";
 
 // Dev logging middleware
 if (process.env.NODE_ENV === "development") {
@@ -30,6 +31,7 @@ app.use(cors());
 
 // Mount routes
 app.use("/api/v1/auth", auth);
+app.use("/api/v1/backups", backups);
 
 // Handle 404 cases
 app.use("*", (_: Request, res: Response) => {
