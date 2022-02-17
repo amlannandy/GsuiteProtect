@@ -5,6 +5,7 @@ import colors from "colors";
 import express, { Request, Response } from "express";
 
 import connectDatabase from "./services/database";
+import errorHandler from "./middleware/errorHandler";
 
 // Load environment variables
 dotenv.config({ path: "./.env" });
@@ -32,6 +33,9 @@ app.use(cors());
 // Mount routes
 app.use("/api/v1/auth", auth);
 app.use("/api/v1/backups", backups);
+
+//Error handling middleware
+app.use(errorHandler);
 
 // Handle 404 cases
 app.use("*", (_: Request, res: Response) => {

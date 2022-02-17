@@ -2,8 +2,9 @@ import { Response } from "express";
 
 import User from "../models/User";
 import IRequest from "../types/Request";
+import asyncHandler from "../middleware/asyncHandler";
 
-export const login = async (req: IRequest, res: Response) => {
+export const login = asyncHandler(async (req: IRequest, res: Response) => {
   const { name, email, imageUrl, googleId, accessToken } = req.body;
 
   let user = await User.findOne({ email: email });
@@ -17,12 +18,14 @@ export const login = async (req: IRequest, res: Response) => {
     success: true,
     data: token,
   });
-};
+});
 
-export const getCurrentUser = async (req: IRequest, res: Response) => {
-  const user = req.user;
-  res.status(200).json({
-    success: true,
-    data: user,
-  });
-};
+export const getCurrentUser = asyncHandler(
+  async (req: IRequest, res: Response) => {
+    const user = req.user;
+    res.status(200).json({
+      success: true,
+      data: user,
+    });
+  }
+);
