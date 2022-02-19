@@ -50,9 +50,23 @@ export const getBackupById = asyncHandler(
 export const deleteBackupById = asyncHandler(
   async (req: IRequest, res: Response) => {
     const backupId = req.params.id;
+    const backup = await Backup.findById(backupId);
+    if (!backup) {
+      return res.status(404).json({
+        success: false,
+        errors: ["Backup not found"],
+      });
+    }
+    if (backup.user._id.toString() !== req.user._id.toString()) {
+      return res.status(401).json({
+        success: false,
+        errors: ["Not authorized to access this backup"],
+      });
+    }
+    await Backup.findByIdAndDelete(backupId);
     res.status(200).json({
       success: true,
-      msg: "Delete backup with id" + backupId,
+      msg: "Backup successfully deleted",
     });
   }
 );
