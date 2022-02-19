@@ -1,5 +1,6 @@
 import { Response } from "express";
 
+import Backup from "../models/Backup";
 import IRequest from "../types/Request";
 import asyncHandler from "../middleware/asyncHandler";
 
@@ -15,9 +16,10 @@ export const getBackupsList = asyncHandler(
 
 export const createBackup = asyncHandler(
   async (req: IRequest, res: Response) => {
+    const backup = await Backup.create({ user: req.user });
     res.status(200).json({
       success: true,
-      msg: "Create backup route",
+      data: backup,
     });
   }
 );
