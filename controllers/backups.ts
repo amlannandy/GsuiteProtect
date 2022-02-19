@@ -6,7 +6,7 @@ import asyncHandler from "../middleware/asyncHandler";
 
 export const getBackupsList = asyncHandler(
   async (req: IRequest, res: Response) => {
-    const userId = req.user.id;
+    const userId = req.user._id;
     res.status(200).json({
       success: true,
       msg: "Backups belonging to user id" + userId,
@@ -26,10 +26,22 @@ export const createBackup = asyncHandler(
 
 export const getBackupById = asyncHandler(
   async (req: IRequest, res: Response) => {
-    const backupId = req.params.id;
+    const backup = await Backup.findById(req.params.id).populate("user");
+    if (!backup) {
+      return res.status(404).json({
+        success: false,
+        errors: ["Backup not found"],
+      });
+    }
+    if (backup.user._id.toString() !== req.user._id.toString()) {
+      return res.status(401).json({
+        success: false,
+        errors: ["Not authorized to access this backup"],
+      });
+    }
     res.status(200).json({
       success: true,
-      msg: "Backup with id" + backupId,
+      data: backup,
     });
   }
 );
