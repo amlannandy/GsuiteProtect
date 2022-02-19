@@ -7,9 +7,10 @@ import asyncHandler from "../middleware/asyncHandler";
 export const getBackupsList = asyncHandler(
   async (req: IRequest, res: Response) => {
     const userId = req.user._id;
+    const backups = await Backup.find({ where: { user: userId } });
     res.status(200).json({
       success: true,
-      msg: "Backups belonging to user id" + userId,
+      data: backups,
     });
   }
 );
