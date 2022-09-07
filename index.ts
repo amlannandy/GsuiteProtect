@@ -4,8 +4,8 @@ import morgan from "morgan";
 import colors from "colors";
 import express, { Request, Response } from "express";
 
-import connectDatabase from "./services/database";
-import errorHandler from "./middleware/errorHandler";
+import connectDatabase from "services/database";
+import errorHandler from "middleware/errorHandler";
 
 // Load environment variables
 dotenv.config({ path: "./.env" });
@@ -16,8 +16,8 @@ const app = express();
 app.use(express.json());
 
 // Import route files
-import auth from "./routes/auth";
-import backups from "./routes/backups";
+import auth from "routes/auth";
+import backups from "routes/backups";
 
 // Dev logging middleware
 if (process.env.NODE_ENV === "development") {

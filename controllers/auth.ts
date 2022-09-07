@@ -1,8 +1,8 @@
 import { Response } from "express";
 
-import User from "../models/User";
-import IRequest from "../types/Request";
-import asyncHandler from "../middleware/asyncHandler";
+import User from "models/User";
+import IRequest from "types/Request";
+import asyncHandler from "middleware/asyncHandler";
 
 export const authenticate = asyncHandler(
   async (req: IRequest, res: Response) => {

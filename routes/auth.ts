@@ -1,7 +1,7 @@
 import express from "express";
 
-import { authenticate, getCurrentUser } from "../controllers/auth";
-import authHandler from "../middleware/authHandler";
+import { authenticate, getCurrentUser } from "controllers/auth";
+import authHandler from "middleware/authHandler";
 
 const router = express.Router();
 

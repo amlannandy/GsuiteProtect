@@ -1,6 +1,6 @@
 import { Request } from "express";
 
-import IUser from "./User";
+import IUser from "types/User";
 
 interface IRequest extends Request {
   user: IUser;

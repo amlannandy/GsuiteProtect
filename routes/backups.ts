@@ -6,8 +6,8 @@ import {
   getBackupById,
   deleteBackupById,
   restoreBackup,
-} from "../controllers/backups";
-import authHandler from "../middleware/authHandler";
+} from "controllers/backups";
+import authHandler from "middleware/authHandler";
 
 const router = express.Router();
 

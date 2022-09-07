@@ -1,8 +1,8 @@
 import jwt from "jsonwebtoken";
 import { Response, NextFunction } from "express";
 
-import User from "../models/User";
-import IRequest from "../types/Request";
+import User from "models/User";
+import IRequest from "types/Request";
 
 const authHandler = async (
   req: IRequest,
