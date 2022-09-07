@@ -1,8 +1,8 @@
 import { Response } from "express";
 
+import asyncHandler from "middleware/asyncHandler";
 import Backup from "models/Backup";
 import IRequest from "types/Request";
-import asyncHandler from "middleware/asyncHandler";
 
 export const getBackupsList = asyncHandler(
   async (req: IRequest, res: Response) => {

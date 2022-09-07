@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import { NextFunction, Request, Response } from "express";
 import { check, validationResult } from "express-validator";
 
 export const validateAuthenticate = [

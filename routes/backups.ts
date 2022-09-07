@@ -1,11 +1,11 @@
 import express from "express";
 
 import {
-  getBackupsList,
   createBackup,
-  getBackupById,
   deleteBackupById,
-  restoreBackup,
+  getBackupById,
+  getBackupsList,
+  restoreBackup
 } from "controllers/backups";
 import authHandler from "middleware/authHandler";
 
